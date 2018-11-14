@@ -1,0 +1,30 @@
+<!--commons/components/common-content/common-content.wxml-->
+<import src="../../templates/items.wxml" />
+<meta name='referrer' content='no-referrer' />
+<view class="common-content-box">
+    <view class="content-header">
+        <view class="title">
+            <view style="background-positon:{{type_info.icon.x}}rpx {{type_info.icon.y}}rpx"class="title-icon"></view>
+            <text class="text-large">{{type_info.title}}</text>
+        </view>
+        <navigator url="{{type_info.control_link}}" class="control">
+            {{type_info.control_title || '更多'}}
+            <view class="control-icon"></view>
+        </navigator>
+    </view>
+    <view class="content">
+        <!--    
+            block 只作为列表渲染用，自身不显示在页面中，不起布局作用
+            block配合wx:if、wx:for使用，标明if、for的作用范围 
+        -->
+        <block wx:for="{{items}}" wx:key="{{item.id}}">
+            <template
+            wx:if="{{ index < (type_info.item_type !== 'four' ? 3 : 4) }}"
+            data="{{ item: item }}"
+            is="{{ type_info.item_type !== 'four' ? 'common-item' : 'four-item' }}"
+            />
+            <!-- wx:for循环出来自动得到item,和index,可以直接拿来用 -->
+            <!-- 三元运算的意思是:因为我们要复用组件,而模板里有两种类似的,看我们是用哪种-->
+        </block>
+    </view>
+</view>

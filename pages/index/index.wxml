@@ -1,0 +1,11 @@
+
+<view class="page index">
+  <app-index-top-group></app-index-top-group>
+  <block wx:for="{{music}}" wx:key="{{item.id}}">
+      <common-content-box
+      items="{{item.objects_point}}"
+      type="{{item.id}}">
+      </common-content-box>
+  </block>
+  <app-index-footer></app-index-footer>
+</view>

@@ -1,0 +1,10 @@
+<!--pages/index/components/index-top-group/index-top-group.wxml-->
+<meta name='referrer' content='no-referrer' />
+<view class="index-top-group">
+    <!-- banner -->
+    <index-banner imgUrls="{{datas.banner}}"></index-banner>
+        <!-- 人气M音 -->
+    <common-content-box type = "sound" items = "{{datas.sound}}" ></common-content-box>
+    <!-- 频道 -->
+    <common-content-box items="{{datas.channel}}" type="channel"></common-content-box>
+</view>

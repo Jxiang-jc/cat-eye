@@ -1,0 +1,7 @@
+{   
+    "usingComponents": {
+        "app-index-top-group": "./components/index-top-group/index-top-group",
+        "common-content-box": "../../commons/components/common-content/common-content",
+        "app-index-footer": "./components/index-footer/index-footer"
+    }
+}

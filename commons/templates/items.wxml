@@ -1,0 +1,28 @@
+<template name="common-item">
+    <view class="common-item">
+        <view class="image-box">
+            <image src="{{'https://static.missevan.com/coversmini/' + item.cover_image}}" />
+        </view>
+        <view class="title">{{item.soundstr}}</view>
+        <view class="info">
+            <view class="paly-count">{{item.view_count_formatted || item.view_count}}</view>
+            <view class="comment-count">
+                {{item.comment_count || item.comments_count}}
+            </view>
+        </view>
+    </view>
+</template>
+<template name="four-item">
+    <view class="four-item">
+        <view class="image-box">
+            <image src="{{item.bigpic}}" />
+            <view class="count">
+                <view class="icon_man"></view>
+                {{item.follow_num}}
+            </view>
+        </view>
+        <view class="title">
+            {{item.name}} 
+        </view>
+    </view>
+</template>

@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "index-banner": "./children/banner/banner",
+        "common-content-box": "../../../../commons/components/common-content/common-content"
+    }
+  }
