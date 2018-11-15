@@ -1,0 +1,111 @@
+.album-list {
+    
+    .top {
+        box-sizing: border-box;
+        height: 300rpx;
+        padding: 20rpx;
+        display: flex;
+        position:relative;
+        overflow: hidden;
+        background-color:rgba(0,0,0,.1);
+        font-family: 华文细黑;
+        .blur-bg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: 100% 100%;
+            background-image:url('https://static.missevan.com/coversmini/201705/24/feb87cfd0434ba497a4fea73ddc11964162137.png');
+            filter: blur(40rpx);
+            z-index: -1;
+        }
+        .image-box {
+            width: 220rpx;height: 220rpx;
+            padding:10rpx 0 0 10rpx;
+            image {
+                width: 100%;height: 100%;
+            }
+        }
+        .top-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 16px;
+            padding-left: 40rpx;
+            height: 220rpx;
+            .title {
+
+            }
+            .owner {
+                display: flex;
+                align-items: center;
+                image {
+                    width: 50rpx;
+                    height: 50rpx;
+                    margin-right:20rpx;
+                }
+                text {
+
+                }
+            }
+        }
+    }
+}
+
+.sound-list {
+
+    .sound-item {
+        height: 140rpx;
+        padding: 20rpx;
+        box-sizing: border-box;
+        display:flex;
+        border-bottom: 1px solid #e0e0e0;
+        image {
+            width: 100rpx;
+            height: 100rpx;
+        }
+        .info {
+            padding-left: 20rpx;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            height: 100rpx;
+            .title {
+                font-size:12px;
+            }
+            .count {
+                width: 240rpx;
+                color: #9e9e9e;
+                font-size: 12px;
+                display: flex;
+                justify-content: space-between;
+                text {
+                    padding-left:30rpx;
+                    position:relative;
+                }
+                .play-times:before, .duration:before {
+                    content: '';
+                    display: block;
+                    background-size: 112rpx 110rpx;
+                    background-image: url(https://static.missevan.com/assets/m/images/build/sprite-icons-thumbnails@2x.f1c29abf.png);
+                    background-position: -88rpx -28rpx;
+                    position: absolute;
+                    left: 4rpx;
+                    top: 6rpx;
+                    width: 24rpx;
+                    height:24rpx; line-height: 24rpx;
+                }
+                .duration:before {
+                    background-position: -15px -44px;
+                    top: 7rpx;
+                }
+            }
+        }
+    }
+}

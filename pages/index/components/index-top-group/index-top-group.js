@@ -17,6 +17,9 @@ Component({
       //https://www.missevan.com/mobileWeb/newHomepage3
       request({
         url: 'https://www.missevan.com/mobileWeb/newHomepage3',
+        header: {
+          'content-type': 'application/json', // 默认值
+        },
         success: (res) => {
           console.log(res)
           this.setData({ datas: res.info })

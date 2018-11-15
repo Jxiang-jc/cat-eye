@@ -10,10 +10,26 @@ Page({
   data: {
     info: {}
   },
+  toSoundDetail (e) {
+    let id = e.currentTarget.dataset.id
+    let duration = e.currentTarget.dataset.duration
+    wx.navigateTo({
+      url: `../sound/sound?id=${id}&duration=${duration}`
+    })
+  },
   getInfo (id) {
     request({
       url:'https://www.missevan.com/sound/soundalllist?albumid='+ id,
       success: (res) => {
+        console.log(222, res)
+        res.info.sounds = res.info.sounds.map(item => {
+          let time = Math.ceil(item.duration / 1000)
+          let minutes = Math.floor(time / 60)
+          let seconds = time % 60
+          seconds = seconds < 10 ? '0' + seconds : seconds
+          item.format_duration = minutes + ':' + seconds
+          return item
+        })
         this.setData({
           info: res.info
         })

@@ -1,2 +1,33 @@
-<!--pages/album-list/album-list.wxml-->
-<text>pages/album-list/album-list.wxml</text>
+<!-- pages/album-list/album-list.wxml -->
+<view class="album-list">
+    <view class="top">
+        <view class="blur-bg" style="background-image:url({{info.album.front_cover}})"></view>
+        <view class="image-box">
+            <image src="{{info.album.front_cover}}" />
+        </view>
+        <view class="top-info">
+            <view class="title">{{info.album.title}}</view>
+            <view class="owner">
+                <image src="{{info.owner.avatar2}}" />
+                <text>{{info.owner.username}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="sound-list">
+        <block wx:for="{{info.sounds}}" wx:key="item.id">
+            <view 
+            data-id="{{info.album.id}}"
+            data-duration="{{item.format_duration}}"
+            bindtap="toSoundDetail" class="sound-item">
+                <image src="{{item.front_cover}}" />
+                <view class="info">
+                    <view class="title">{{item.soundstr}}</view>
+                    <view class="count">
+                        <text class="play-times">{{item.view_count_formatted}}</text>
+                        <text class="duration">{{item.format_duration}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

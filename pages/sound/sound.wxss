@@ -1,0 +1,67 @@
+.sound .player-box {
+  height: 650rpx;
+  position: relative;
+}
+.sound .player-box .bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: url("https://static.missevan.com/mosaic/201806/22/da521f4f00a7fa54056adc88570daa46080847.jpeg");
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sound .player-box .bg image {
+  width: 440rpx;
+  height: 440rpx;
+  border-radius: 50%;
+}
+.sound .player-box .control-play {
+  position: absolute;
+  right: 30rpx;
+  bottom: 40rpx;
+  width: 70rpx;
+  height: 56rpx;
+  margin-top: 1px;
+  background-repeat: no-repeat;
+  background-size: 220rpx 204rpx;
+  background-image: url(https://static.missevan.com/assets/m/images/build/sprite-icons-sound@2x.0a0890c7.png);
+  background-position: -50rpx 0;
+  margin-left: 1px;
+  box-shadow: 1px 1px 20px #332;
+  border-radius: 10rpx;
+}
+.sound .player-box .control-play.play {
+  background-position: 5rpx -60rpx;
+}
+.sound .player-box .control-play.pause {
+  background-position: -50rpx 0;
+}
+.sound .slider {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 10rpx;
+  overflow: hidden;
+}
+.sound .slider text {
+  float: left;
+  width: 15%;
+  height: 36rpx;
+  line-height: 36rpx;
+  margin: 20rpx 0;
+  padding-left: 15rpx;
+}
+.sound .slider text:last-child {
+  float: right;
+  text-align: right;
+  margin-left: -15rpx;
+  padding-right: 15rpx;
+}
+.sound .slider slider {
+  margin: 20rpx 0 20rpx 30rpx;
+  width: 62%;
+  float: left;
+}

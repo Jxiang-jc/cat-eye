@@ -1,7 +1,8 @@
+<meta name='referrer' content='no-referrer' />
 <template name="common-item">
     <view class="common-item">
         <view class="image-box">
-            <image src="{{'https://static.missevan.com/coversmini/' + item.cover_image}}" />
+            <image src="{{'https://static.missevan.com/coversmini/' + item.cover_image}}" name='referrer' content="no-referrer"/>
         </view>
         <view class="title">{{item.soundstr}}</view>
         <view class="info">
