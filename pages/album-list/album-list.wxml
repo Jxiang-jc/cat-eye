@@ -16,9 +16,10 @@
     <view class="sound-list">
         <block wx:for="{{info.sounds}}" wx:key="item.id">
             <view 
-            data-id="{{info.album.id}}"
+            bindtap="toSoundDetail"
+            data-id="{{item.id}}"
             data-duration="{{item.format_duration}}"
-            bindtap="toSoundDetail" class="sound-item">
+             class="sound-item">
                 <image src="{{item.front_cover}}" />
                 <view class="info">
                     <view class="title">{{item.soundstr}}</view>

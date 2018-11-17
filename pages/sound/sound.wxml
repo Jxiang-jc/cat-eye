@@ -8,7 +8,7 @@
         </view>
     </view>
     <view class="slider">
-        <text>00:00</text>
+        <text>{{currentTime}}</text>
         <slider
             step="1"
             bindchange="changeSlide"
@@ -16,9 +16,11 @@
             activeColor="#1a94e1"
             backgroundColor="#d5d5d5"
             block-color="#ccc"
+            value="{{current}}"
+            min="0" max="{{duration}}"
         >
         </slider>
-        <text>{{duration}}</text>
+        <text>{{timeLength}}</text>
     </view>
 
 </view>

@@ -9,8 +9,9 @@ Page({
     info: {},
     play_status: 'pause',
     current: 0, // 当前时间
-    duration: 0, // 总时长
-    minute: 0
+    duration: 0, //silder参数，最大值
+    currentTime: '0:00',
+    timeLength: 0 // 总时长
   },
   getSoundDetail (id) {
     request({
@@ -24,6 +25,7 @@ Page({
       }
     })
   },
+  // 创建音乐播放器
   createAudio (src) {
     this.audio = wx.createInnerAudioContext()
     this.audio.src = src
@@ -34,9 +36,43 @@ Page({
     })
 
     this.audio.onSeeked(() => { // 音频完成跳转操作的事件
-      // console.log('进度更改')
-      this.timeupdate()
+      console.log('进度更改')
+      this.setData({ 
+        current: this.audio.currentTime.toFixed(2) *100
+      })
     })
+  },
+  // 更新时间以及进度条  
+  timeupdate () {
+    this.audio.onTimeUpdate((res) => {
+      
+      var per = this.audio.currentTime.toFixed(0)//获取当前播放时间所对应的s
+      
+      this.setData({ 
+        currentTime: this._formatTime(per),
+        duration: this.audio.duration.toFixed(2) *100 ,
+        current: per*100
+      })
+      // console.log(this.audio.duration) 当前音频的长度 
+      // console.log(this.audio.currentTime) 当前音频播放位置
+    })
+  },
+  // 秒转换分钟
+  _formatTime: function (interval) {
+    interval = interval | 0
+    const minute = interval / 60 | 0 
+    const second = this._pad(interval % 60)
+    return `${minute}:${second}`
+  },
+  /*秒前边加0*/
+  _pad(num, n = 2) {
+    let len = num.toString().length
+
+    while (len < n) {
+      num = '0' + num
+      len++
+    }
+    return num
   },
 
   playAndPause () {
@@ -50,24 +86,13 @@ Page({
       this.setData({ play_status: 'pause' })
     } 
   },
-  
-  timeupdate () {
-    this.audio.onTimeUpdate((res) => {
-      console.log(this.audio)
-      let seconds = Math.floor(this.audio.currentTime.toFixed(0))
-      seconds = seconds < 10 ? '0' + seconds : seconds
-      // console.log(this.audio.duration) 当前音频的长度 
-      // console.log(this.audio.currentTime) 当前音频播放位置
-      // let time =  Math.ceil(item.duration / 1000)
-      this.setData({ 
-        current: seconds
-      })
-    })
-  },
 
   changeSlide (e) {
     var curval=e.detail.value //滑块拖动的当前值
-    console.log(curval, this.audio.duration, this.audio.currentTime.toFixed(0))
+    console.log(e)
+
+    // console.log(curval, this.audio.duration, this.audio.currentTime.toFixed(0))
+
     this.audio.seek(curval/100) //让滑块跳转至指定位置
   },
 
@@ -75,61 +100,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     let id = options.id || '203087'
-    this.setData({
-      duration: options.duration
-    })
-    this.getSoundDetail(id)
     
-  },
+    this.setData({
+      timeLength: options.duration
+    })
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.getSoundDetail(id)
   }
+
 })

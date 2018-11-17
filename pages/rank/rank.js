@@ -24,7 +24,7 @@ Page({
   toAlbumList (e) { // 跳转到音乐列表
     let id = e.currentTarget.dataset.id
     let url = '../album-list/album-list?id=' + id
-    console.log(url, id)
+    // console.log(url, id)
     wx.navigateTo({
       url: url
     })

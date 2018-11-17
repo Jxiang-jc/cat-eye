@@ -11,6 +11,7 @@ Page({
     info: {}
   },
   toSoundDetail (e) {
+    console.log(e)
     let id = e.currentTarget.dataset.id
     let duration = e.currentTarget.dataset.duration
     wx.navigateTo({
@@ -21,7 +22,7 @@ Page({
     request({
       url:'https://www.missevan.com/sound/soundalllist?albumid='+ id,
       success: (res) => {
-        console.log(222, res)
+        
         res.info.sounds = res.info.sounds.map(item => {
           let time = Math.ceil(item.duration / 1000)
           let minutes = Math.floor(time / 60)
@@ -33,6 +34,7 @@ Page({
         this.setData({
           info: res.info
         })
+        // console.log(222, res)
       }
     })
   },

@@ -1,2 +1,14 @@
-<!--pages/music-list/music-list.wxml-->
-<text>pages/music-list/music-list.wxml</text>
+<!-- pages/music-list/music-list.wxml -->
+<button
+    type="default" size="default"  plain="true"
+        bindtap="getLocation" hover-class> 点击打开地图 </button>
+<map
+    longitude="23.099994"
+    latitude="113.324520"
+    markers="{{markers}}"
+    covers="{{covers}}"
+    scale="16"
+    style="width: 375px; height: 200px;"
+    show-location
+>
+</map>

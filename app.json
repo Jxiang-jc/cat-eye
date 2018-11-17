@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/rank/rank",
     "pages/index/index",
     "pages/music-list/music-list",
     "pages/classify/classify",
     "pages/album-list/album-list",
+    "pages/rank/rank",
     "pages/sound/sound",
     "pages/index/components/index-footer/index-footer"
     
